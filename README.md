@@ -18,7 +18,7 @@ Run:<br>
 
 ## Objective
 A store committed with the environment has decided to stop publishing their offers through printed media. To do so,
-they have implemented a digital flier, published in the store's web page. As the new dev lead, your responsibility is
+they have implemented a digital flyer, published in the store's web page. As the new dev lead, your responsibility is
 to complete the project and implement best practices whenever possible.
 
     - Currently, the active date filter is not working. When the active date filter is provided, 
