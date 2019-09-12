@@ -1,11 +1,11 @@
 package com.ang.test.offer.dto;
 
+import java.math.BigDecimal;
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.math.BigDecimal;
-import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -29,5 +29,50 @@ public class OfferDTO {
     private BigDecimal saving;
     // Product ID is mandatory
     private ProductDTO product;
+    
+    
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public BigDecimal getDiscountPct() {
+		return discountPct;
+	}
+	public void setDiscountPct(BigDecimal discountPct) {
+		this.discountPct = discountPct;
+	}
+	public Date getActiveFrom() {
+		return activeFrom;
+	}
+	public void setActiveFrom(Date activeFrom) {
+		this.activeFrom = activeFrom;
+	}
+	public Date getActiveUntil() {
+		return activeUntil;
+	}
+	public void setActiveUntil(Date activeUntil) {
+		this.activeUntil = activeUntil;
+	}
+	public BigDecimal getDiscountedPrice() {
+		return discountedPrice;
+	}
+	public void setDiscountedPrice(BigDecimal discountedPrice) {
+		this.discountedPrice = discountedPrice;
+	}
+	public BigDecimal getSaving() {
+		return saving;
+	}
+	public void setSaving(BigDecimal saving) {
+		this.saving = saving;
+	}
+	public ProductDTO getProduct() {
+		return product;
+	}
+	public void setProduct(ProductDTO product) {
+		this.product = product;
+	}
 
+    
 }
