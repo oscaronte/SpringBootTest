@@ -1,20 +1,22 @@
 package com.ang.test.offer.data;
 
-import com.ang.test.offer.domain.Offer;
-import com.ang.test.offer.domain.Product;
-import com.ang.test.offer.repository.OfferRepository;
-import com.ang.test.offer.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.ApplicationArguments;
-import org.springframework.boot.ApplicationRunner;
-import org.springframework.stereotype.Component;
-
-import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
+import org.springframework.stereotype.Component;
+
+import com.ang.test.offer.domain.Offer;
+import com.ang.test.offer.domain.Product;
+import com.ang.test.offer.repository.OfferRepository;
+import com.ang.test.offer.repository.ProductRepository;
 
 @Component
 public class DataInit implements ApplicationRunner {
@@ -33,12 +35,12 @@ public class DataInit implements ApplicationRunner {
     @Transactional
     public void run(ApplicationArguments args) throws Exception {
         List<Product> prods = new ArrayList<>();
-        prods.add(new Product(null, "Playstation 4 PRO", new BigDecimal("500.00")));
-        prods.add(new Product(null, "Playstation 4", new BigDecimal("300.00")));
-        prods.add(new Product(null, "XBox ONE", new BigDecimal("280.00")));
-        prods.add(new Product(null, "Nintendo Switch", new BigDecimal("480.00")));
-        prods.add(new Product(null, "Nintendo Switch 1.1", new BigDecimal("580.00")));
-        prods.add(new Product(null, "NES Mini", new BigDecimal("100.00")));
+        prods.add(new Product(null, "Playstation 4 PRO", BigDecimal.valueOf(500d)));
+        prods.add(new Product(null, "Playstation 4", BigDecimal.valueOf(300d)));
+        prods.add(new Product(null, "XBox ONE", BigDecimal.valueOf(280d)));
+        prods.add(new Product(null, "Nintendo Switch", BigDecimal.valueOf(480d)));
+        prods.add(new Product(null, "Nintendo Switch 1.1", BigDecimal.valueOf(580d)));
+        prods.add(new Product(null, "NES Mini", BigDecimal.valueOf(100d)));
         productRepository.saveAll(prods);
 
         List<Offer> offers = new ArrayList<>();
