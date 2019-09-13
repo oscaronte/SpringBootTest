@@ -22,40 +22,39 @@ import com.ang.test.offer.service.OfferService;
 @RequestMapping("/offer")
 public class OfferController {
 
-    private OfferService offerService;
+	private OfferService offerService;
 
-    public OfferController(OfferService offerService) {
-        this.offerService = offerService;
-    }
+	public OfferController(OfferService offerService) {
+		this.offerService = offerService;
+	}
 
-    @GetMapping("/list")
-    public ResponseEntity<List<OfferDTO>> findAllActive(
-            @RequestParam(value = "activeFrom", required = false) Date activeOn) {
-        List<OfferDTO> result;
-        
-        if(activeOn!=null) {
-        	result = offerService.findAllDTO(activeOn);
-        } else {
-        	result = offerService.findActiveToDay();
-        }
-        return new ResponseEntity<>(result, HttpStatus.OK);
-    }
+	@GetMapping("/list")
+	public ResponseEntity<List<OfferDTO>> findAllActive(
+			@RequestParam(value = "activeFrom", required = false) Date activeOn) {
+		List<OfferDTO> result;
 
-    @PostMapping("/")
-    public ResponseEntity<OfferDTO> add(@Valid OfferDTO offerDTO) {
-        offerDTO.setId(null);
-        return new ResponseEntity<>(offerService.save(offerDTO), HttpStatus.OK);
-    }
+		if (activeOn != null) {
+			result = offerService.findAllDTO(activeOn);
+		} else {
+			result = offerService.findActiveToDay();
+		}
+		return new ResponseEntity<>(result, HttpStatus.OK);
+	}
 
-    @PutMapping("/")
-    public ResponseEntity<OfferDTO> edit(@Valid OfferDTO offerDTO) {
-        // Null IDs are not allowed
-        return new ResponseEntity<>(offerService.save(offerDTO), HttpStatus.OK);
-    }
+	@PostMapping("/")
+	public ResponseEntity<OfferDTO> add(@Valid OfferDTO offerDTO) {
+		offerDTO.setId(null);
+		return new ResponseEntity<>(offerService.save(offerDTO), HttpStatus.OK);
+	}
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<OfferDTO> delete(Long id) {
-        return new ResponseEntity<>(new OfferDTO(), HttpStatus.OK);
-    }
+	@PutMapping("/")
+	public ResponseEntity<OfferDTO> edit(@Valid OfferDTO offerDTO) {
+		// Null IDs are not allowed
+		return new ResponseEntity<>(offerService.save(offerDTO), HttpStatus.OK);
+	}
 
+	@DeleteMapping("/{id}")
+	public ResponseEntity<OfferDTO> delete(Long id) {
+		return new ResponseEntity<>(new OfferDTO(), HttpStatus.OK);
+	}
 }
