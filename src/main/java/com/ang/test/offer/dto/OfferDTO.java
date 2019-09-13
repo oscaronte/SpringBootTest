@@ -5,32 +5,38 @@ import java.util.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Generated;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class OfferDTO {
 
+	@Generated
     private Long id;
     // Between 0 and 1
+    @NonNull
     private BigDecimal discountPct;
     // Mandatory
     // Output format: MM/dd/yyyy
     // Input format: MM/dd/yyyy
+    @NonNull
     private Date activeFrom;
     // Optional
     // Output format: MM/dd/yyyy
     // Input format: MM/dd/yyyy
     private Date activeUntil;
     // Calculated
+    @Formula("dicountPct * product.price")
     private BigDecimal discountedPrice;
     // Calculated
     private BigDecimal saving;
     // Product ID is mandatory
     private ProductDTO product;
     
-    
+	
 	public Long getId() {
 		return id;
 	}

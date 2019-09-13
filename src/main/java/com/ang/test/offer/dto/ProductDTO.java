@@ -4,17 +4,21 @@ import java.math.BigDecimal;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Generated;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductDTO {
 
+	@Generated
     private Long id;
     // Not null
     // 150 chars
     // Prevent XSS
+    @NonNull
     private String name;
     
 	public Long getId() {
