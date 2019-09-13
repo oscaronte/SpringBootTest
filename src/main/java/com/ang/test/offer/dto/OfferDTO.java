@@ -29,11 +29,11 @@ public class OfferDTO {
     // Input format: MM/dd/yyyy
     private Date activeUntil;
     // Calculated
-    @Formula("dicountPct * product.price")
     private BigDecimal discountedPrice;
     // Calculated
     private BigDecimal saving;
     // Product ID is mandatory
+    @NonNull
     private ProductDTO product;
     
 	
@@ -62,12 +62,18 @@ public class OfferDTO {
 		this.activeUntil = activeUntil;
 	}
 	public BigDecimal getDiscountedPrice() {
+		if(discountedPrice==null) {
+			discountedPrice = discountPct.multiply(product.getPrice());
+		}
 		return discountedPrice;
 	}
 	public void setDiscountedPrice(BigDecimal discountedPrice) {
 		this.discountedPrice = discountedPrice;
 	}
 	public BigDecimal getSaving() {
+		if(saving==null) {
+			saving = product.getPrice().subtract(getDiscountedPrice());
+		}
 		return saving;
 	}
 	public void setSaving(BigDecimal saving) {
