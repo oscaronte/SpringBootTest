@@ -9,10 +9,5 @@ import com.ang.test.offer.domain.Offer;
 
 @Repository
 public interface OfferRepository extends JpaRepository<Offer, Long> {
-	Offer getOffer(Offer o);
-	void deleteOffer(Offer o);
-	void saveOffer(Offer o);
-	void saveAll(List<Offer> offers);
-	
 	List<Offer> getOffersActiveToday();
 }
