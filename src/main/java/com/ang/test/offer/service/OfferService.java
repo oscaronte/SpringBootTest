@@ -14,6 +14,7 @@ import com.ang.test.offer.domain.Offer;
 import com.ang.test.offer.domain.Product;
 import com.ang.test.offer.dto.OfferDTO;
 import com.ang.test.offer.dto.ProductDTO;
+import com.ang.test.offer.exception.NullIdException;
 import com.ang.test.offer.repository.OfferRepository;
 
 @Service
@@ -64,11 +65,16 @@ public class OfferService {
     }
     
     public Offer save(Offer offer) {
-    	
+    	if(offer.getId()==null) {
+    		throw new NullIdException();
+    	}
         return offerRepository.save(offer);
     }
 
     public OfferDTO save(OfferDTO offerDTO) {
+    	if(offerDTO.getId()==null) {
+    		throw new NullIdException();
+    	}
         Offer offer = new Offer(
                 offerDTO.getId(),
                 offerDTO.getDiscountPct(),
