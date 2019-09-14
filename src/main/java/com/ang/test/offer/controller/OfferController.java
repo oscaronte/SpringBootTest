@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ang.test.offer.dto.OfferDTO;
+import com.ang.test.offer.exception.NullIdException;
 import com.ang.test.offer.service.OfferService;
 
 @RestController
@@ -49,7 +50,9 @@ public class OfferController {
 
 	@PutMapping("/")
 	public ResponseEntity<OfferDTO> edit(@Valid OfferDTO offerDTO) {
-		// Null IDs are not allowed
+		if(offerDTO.getId()==null) {
+    		throw new NullIdException();
+    	}
 		return new ResponseEntity<>(offerService.save(offerDTO), HttpStatus.OK);
 	}
 
