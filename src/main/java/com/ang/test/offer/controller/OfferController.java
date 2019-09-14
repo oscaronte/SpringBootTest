@@ -57,7 +57,10 @@ public class OfferController {
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<OfferDTO> delete(Long id) {
-		return new ResponseEntity<>(new OfferDTO(), HttpStatus.OK);
+	public ResponseEntity<Boolean> delete(Long id) {
+		if(id==null) {
+			throw new NullIdException();
+		}
+		return new ResponseEntity<>(offerService.delete(id), HttpStatus.OK);
 	}
 }

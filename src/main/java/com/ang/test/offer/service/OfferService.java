@@ -91,4 +91,15 @@ public class OfferService {
         ));
     }
 
+    public Boolean delete(Long id) {
+    	Boolean result;
+    	
+    	try {
+			offerRepository.deleteById(id);
+			result = Boolean.TRUE;
+		} catch (Exception e) {
+			result = Boolean.FALSE;
+		}
+    	return result;
+    }
 }
